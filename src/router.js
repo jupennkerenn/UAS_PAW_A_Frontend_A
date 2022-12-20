@@ -94,14 +94,6 @@ const routes = [
                 component: () =>
                     import('@/views/Kurir/indexPage.vue'),
             },
-
-            //profile
-            {
-                path: "/profile",
-                name: "profile.index",
-                component: () =>
-                    import('@/views/Profile/indexPage.vue'),
-            },
         ],
     },
 ]
