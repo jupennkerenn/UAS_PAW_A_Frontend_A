@@ -79,8 +79,8 @@
     </div>
   </template>
   <script>
-  import { reactive, ref } from "vue";
-  import { useRouter } from "vue-router";
+  import { onMounted, reactive, ref } from "vue";
+  import { useRouter, useRoute } from "vue-router";
   import axios from "axios";
   export default {
     setup() {
