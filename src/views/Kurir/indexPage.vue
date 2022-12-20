@@ -16,8 +16,8 @@
                                 <tr>
                                     <th scope="col">NAMA KURIR</th>
                                     <th scope="col">UMUR KURIR</th>
-                                    <th scope="col">NO TELP KURIR</th>
                                     <th scope="col">JENIS KELAMIN KURIR</th>
+                                    <th scope="col">NO TELP KURIR</th>
                                 </tr>
                             </thead>
                             <tbody>
