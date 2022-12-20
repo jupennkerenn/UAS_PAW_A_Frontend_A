@@ -30,6 +30,12 @@
                                     'profile.index'
                             }" class="nav-link">Profile</router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link :to="{
+                                name:
+                                    'kurir.index'
+                            }" class="nav-link">Kurir</router-link>
+                        </li>
                     </ul>
                 </div>
             </nav>
