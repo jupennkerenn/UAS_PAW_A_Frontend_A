@@ -7,6 +7,7 @@ const routes = [
         name: 'beranda',
         component: () => import('@/components/DashboardLayout.vue'),
         children: [
+            //pengiriman barang
             {
                 path: "/pengiriman_barang",
                 name: "pengiriman_barang.index",
@@ -32,6 +33,7 @@ const routes = [
                     import('@/views/PengirimanBarang/indexPage.vue'),
             },
 
+            //laporan keluhan
             {
                 path: "/laporan_keluhan",
                 name: "laporan_keluhan.index",
@@ -55,6 +57,32 @@ const routes = [
                 name: "laporan_keluhan.delete",
                 component: () =>
                     import('@/views/LaporanKeluhan/indexPage.vue'),
+            },
+
+            //kurir
+            {
+                path: "/kurir",
+                name: "kurir.index",
+                component: () =>
+                    import('@/views/Kurir/indexPage.vue'),
+            },
+            {
+                path: "/kurir/create",
+                name: "kurir.create",
+                component: () =>
+                    import('@/views/Kurir/createPage.vue'),
+            },
+            {
+                path: "/kurir/update/:id",
+                name: "kurir.update",
+                component: () =>
+                    import('@/views/Kurir/editPage.vue'),
+            },
+            {
+                path: "/kurir/delete/:id",
+                name: "kurir.delete",
+                component: () =>
+                    import('@/views/Kurir/indexPage.vue'),
             },
         ],
     },
