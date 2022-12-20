@@ -48,13 +48,13 @@ const routes = [
                 path: "/laporan_keluhan/update/:id",
                 name: "laporan_keluhan.update",
                 component: () =>
-                    import('@/views/PengirimanBarang/editPage.vue'),
+                    import('@/views/LaporanKeluhan/editPage.vue'),
             },
             {
                 path: "/laporan_keluhan/delete/:id",
                 name: "laporan_keluhan.delete",
                 component: () =>
-                    import('@/views/PengirimanBarang/indexPage.vue'),
+                    import('@/views/LaporanKeluhan/indexPage.vue'),
             },
         ],
     },

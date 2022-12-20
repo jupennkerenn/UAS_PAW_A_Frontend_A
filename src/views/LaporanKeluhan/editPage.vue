@@ -107,7 +107,7 @@ export default {
             pengiriman_barangs,
             validation,
             router,
-            store
+            update
         }
     }
 }
