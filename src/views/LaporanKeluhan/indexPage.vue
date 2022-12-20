@@ -1,7 +1,7 @@
 <template>
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Pengiriman Barang</h1>
+        <h1 class="h2">Laporan Keluhan</h1>
     </div>
     <div class="container mt-5">
         <div class="row">
@@ -16,6 +16,7 @@
                                 <tr>
                                     <th scope="col">NAMA BARANG</th>
                                     <th scope="col">LAPORAN KELUHAN</th>
+                                    <th scope="col">AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
