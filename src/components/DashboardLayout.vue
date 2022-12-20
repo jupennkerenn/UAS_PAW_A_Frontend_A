@@ -27,6 +27,12 @@
                         <li class="nav-item">
                             <router-link :to="{
                                 name:
+                                    'kurir.index'
+                            }" class="nav-link">Register Kurir</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{
+                                name:
                                     'profile.index'
                             }" class="nav-link">Profile</router-link>
                         </li>

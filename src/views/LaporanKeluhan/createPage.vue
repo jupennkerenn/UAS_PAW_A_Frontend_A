@@ -10,6 +10,7 @@
                             <div class="form-group mb-3">
                                 <label class="form-label">Nama Barang</label>
                                 <select class="form-control" v-model="laporan_keluhan.id_barang" placeholder="Masukkan barang Anda">
+                                    <option disabled value="">Masukkan Nama Barang</option>
                                     <option v-for="(pengiriman_barang,id) in pengiriman_barangs" :key="id" v-bind:value="pengiriman_barang.id">
                                         {{ pengiriman_barang.nama_barang }}
                                     </option>

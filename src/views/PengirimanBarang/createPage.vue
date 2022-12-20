@@ -50,6 +50,7 @@
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Jenis Barang</label>
                                 <select class="form-control" v-model="pengiriman_barang.jenis_barang" placeholder="Masukkan Jenis Barang">
+                                    <option disabled value="">Masukkan Jenis Barang</option>
                                     <option>Mudah Pecah</option>
                                     <option>Tidak Mudah Pecah</option>
                                 </select>
@@ -84,6 +85,7 @@
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Estimasi</label>
                                 <select class="form-control" v-model="pengiriman_barang.estimasi" placeholder="Masukkan Estimasi">
+                                    <option disabled value="">Masukkan Estimasi</option>
                                     <option>1 Hari (OK)</option>
                                     <option>3 Hari (REG)</option>
                                     <option>6 Hari (HMT)</option>

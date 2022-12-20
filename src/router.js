@@ -3,6 +3,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 //define a routes
 const routes = [
     {
+        path: "/",
+        name: "Intro",
+        component: () => import('@/components/IntroPage.vue')
+    },
+    {
+        path: "/",
+        name: "Login",
+        component: () => import('@/components/LoginPage.vue')
+    },
+    {
         path: '/',
         name: 'beranda',
         component: () => import('@/components/DashboardLayout.vue'),
@@ -83,6 +93,14 @@ const routes = [
                 name: "kurir.delete",
                 component: () =>
                     import('@/views/Kurir/indexPage.vue'),
+            },
+
+            //profile
+            {
+                path: "/profile",
+                name: "profile.index",
+                component: () =>
+                    import('@/views/Profile/indexPage.vue'),
             },
         ],
     },

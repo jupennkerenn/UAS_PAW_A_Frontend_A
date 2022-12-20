@@ -9,65 +9,42 @@
             <form @submit.prevent="store">
               <div class="form-group mb-3">
                 <label class="form-label">Nama Kurir</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="kurir.nama_kurir"
-                  placeholder="Masukkan Nama Kurir"
-                />
+                <input type="text" class="form-control" v-model="kurir.nama_kurir" placeholder="Masukkan Nama Kurir" />
                 <!-- validation -->
-                <div
-                  v-if="validation.nama_kurir"
-                  class="mt-2 alert alert-danger"
-                >
+                <div v-if="validation.nama_kurir" class="mt-2 alert alert-danger">
                   {{ validation.nama_kurir[0] }}
                 </div>
               </div>
               <div class="form-group mb-3">
                 <label for="content" class="form-label">Umur Kurir</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  v-model="kurir.umur_kurir"
-                  placeholder="Masukkan Umur Kurir"
-                />
+                <input type="number" class="form-control" v-model="kurir.umur_kurir"
+                  placeholder="Masukkan Umur Kurir" />
                 <!-- validation -->
-                <div
-                  v-if="validation.umur_kurir"
-                  class="mt-2 alert alert-danger"
-                >
+                <div v-if="validation.umur_kurir" class="mt-2 alert alert-danger">
                   {{ validation.umur_kurir[0] }}
                 </div>
               </div>
               <div class="form-group mb-3">
                 <label for="content" class="form-label">No Telp Kurir</label>
-                <input
-                  class="form-control"
-                  type="number"
-                  v-model="kurir.telp_kurir"
-                  placeholder="Masukkan No Telp Kurir"
-                />
+                <input class="form-control" type="number" v-model="kurir.telp_kurir"
+                  placeholder="Masukkan No Telp Kurir" />
                 <!-- validation -->
-                <div
-                  v-if="validation.telp_kurir"
-                  class="mt-2 alert alert-danger"
-                >
+                <div v-if="validation.telp_kurir" class="mt-2 alert alert-danger">
                   {{ validation.telp_kurir[0] }}
                 </div>
               </div>
               <div class="form-group mb-3">
                 <label for="content" class="form-label">Gender Kurir</label>
-                <select v-model="selected">
+                <select class="form-control" v-model="kurir.gender_kurir"
+                  placeholder="Masukkan Jenis Barang">
                   <option disabled value="">Pilih Gender</option>
                   <option>Pria</option>
                   <option>Wanita</option>
                 </select>
                 <!-- validation -->
-                <div
-                  v-if="validation.gender_kurir"
-                  class="mt-2 alert alert-danger"
-                >
-                  {{ validation.gender_kurir[0] }}
+                <div v-if="validation.gender_kurir" class="mt-2 alert alert-danger">
+                  {{ validation.gender_kurir[0]
+                  }}
                 </div>
               </div>
               <button type="submit" class="btn btn-primary">SIMPAN</button>
