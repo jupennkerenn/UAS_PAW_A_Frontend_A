@@ -56,12 +56,12 @@
                 </div>
               </div>
               <div class="form-group mb-3">
-                <label for="content" class="form-label">Gender Kurir</label>
-                <select v-model="selected">
-                  <option disabled value="">Pilih Gender</option>
-                  <option>Pria</option>
-                  <option>Wanita</option>
-                </select>
+                  <label for="content" class="form-label">Gender Kurir</label>
+                  <select class="form-control" v-model="kurir.gender_kurir" placeholder="Pilih Gender">
+                    <option disabled value="">Pilih Gender</option>
+                    <option>Pria</option>
+                    <option>Wanita</option>
+                  </select>
                 <!-- validation -->
                 <div
                   v-if="validation.gender_kurir"

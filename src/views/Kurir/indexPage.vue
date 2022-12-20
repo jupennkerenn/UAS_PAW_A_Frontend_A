@@ -18,6 +18,7 @@
                                     <th scope="col">UMUR KURIR</th>
                                     <th scope="col">JENIS KELAMIN KURIR</th>
                                     <th scope="col">NO TELP KURIR</th>
+                                    <th scope="col">AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
