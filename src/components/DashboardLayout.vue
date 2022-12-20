@@ -24,12 +24,12 @@
                                     'laporan_keluhan.index'
                             }" class="nav-link">Laporan Keluhan</router-link>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                             <router-link :to="{
                                 name:
                                     'profile.index'
                             }" class="nav-link">Profile</router-link>
-                        </li> -->
+                        </li>
                         <li class="nav-item">
                             <router-link :to="{
                                 name:
