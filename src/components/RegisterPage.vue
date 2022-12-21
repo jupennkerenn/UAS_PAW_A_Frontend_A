@@ -74,53 +74,53 @@ import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 export default {
-    setup() {
-        const notif = window.toastr;
-        notif.option = {
+  setup() {
+    const notif = window.toastr;
+    notif.option = {
             closeButton: true,
             timeOut: 1000,
         };
-        //inisialisasi vue router on Composition API
-        const router = useRouter();
-
-        //state user
-        const user = reactive({
-            name: "",
-            email: "",
-            password: "",
+    //state user
+    const user = reactive({
+      name: "",
+      email: "",
+      password: "",
+    });
+    //state validation
+    const validation = ref([]);
+    //vue router
+    const router = useRouter();
+    //method register
+    function register() {
+      let name = user.name;
+      let email = user.email;
+      let password = user.password;
+      axios
+        .post("http://localhost:8000/api/register", {
+          name: name,
+          email: email,
+          password: password,
+        })
+        .then(() => {
+          //redirect ke post index
+          router.push({
+            name: "Intro",
+          });
+          notif.success("Berhasil Register!");
+        })
+        .catch((error) => {
+          //assign state validation with error
+          validation.value = error.response.data;
         });
-
-        //state validation
-        const validation = ref([]);
-
-        //method Register
-        function register() {
-            //send server with axios
-            axios
-                .post("https://localhost:8000/api/register", user)
-                .then(() => {
-                    //redirect ke halaman login
-                    router
-                        .push({
-                            name: "Intro",
-                        })
-                        .then(() => {
-                            notif.success(`Berhasil Register!`);
-                        });
-                })
-                .catch((error) => {
-                    //set validation dari error response
-                    validation.value = error.response.data;
-                });
-        }
-
-        return {
-            user,
-            validation,
-            router,
-            register,
-        };
-    },
+    }
+    //return
+    return {
+      user,
+      validation,
+      router,
+      register,
+    };
+  },
 };
 </script>
 <style>

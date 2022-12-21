@@ -8,12 +8,12 @@ const routes = [
         component: () => import('@/components/IntroPage.vue')
     },
     {
-        path: '/',
+        path: '/register',
         name: 'Register',
         component: () => import('@/components/RegisterPage.vue')
     },
     {
-        path: '/',
+        path: '/beranda',
         name: 'beranda',
         component: () => import('@/components/DashboardLayout.vue'),
         children: [
@@ -101,6 +101,12 @@ const routes = [
                 name: "profile.index",
                 component: () =>
                     import('@/views/Profile/indexPage.vue'),
+            },
+            {
+                path: "/profile",
+                name: "profile.update",
+                component: () =>
+                    import('@/views/Profile/editPage.vue'),
             },
         ],
     },

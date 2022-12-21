@@ -1,71 +1,37 @@
 <template>
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="d-flex align-items-center">
-                <div class="flex-shrink-0"><img class="avatar avatar-lg p-1"
-                        src="https://therichpost.com/wp-content/uploads/2021/03/avatar2.png" alt="Jassa Rich"></div>
-                <div class="flex-grow-1 ps-3">
-                    <h4>Jassa Rich</h4>
-                    <p class="text-muted mb-0">Coder</p>
-                </div>
-            </div>
+  <div class="container mt-4 mb-4 p-3 d-flex justify-content-center gradient-custom-2">
+    <div class="card p-4 ">
+      <div class=" image d-flex flex-column justify-content-center align-items-center "> <button
+          class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button>
+        <span class="name mt-3">{{ user.name }}</span> <span class="idd">{{ user.email }}</span>
+        <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number"><span
+              class="follow">User</span></span> </div>
+        <div class=" d-flex mt-2"> 
+          <router-link :to="{ name: 'profile.update' }" class="btn btn-outline-danger">EditProfile</router-link> 
         </div>
+        <div class="text mt-3"> <span>Terima kasih telah mendaftar dan menjadi bagian dari Kirang GO!<br><br>Terus tetap
+            menggunakan jasa kami karena dengan Kirang GO!, Kirim Barang jadi Gampang!!!</span> </div>
+      </div>
     </div>
-
-    <form class="card mb-4">
-        <h4 class="card-heading">Edit Profile</h4>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="mb-4">
-                        <label class="form-label">Username</label>
-                        <input class="form-control" type="text" placeholder="Company" value="Jassa Rich">
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="mb-4">
-                        <label class="form-label">Password</label>
-                        <input class="form-control" type="text" placeholder="Username" value="Jassa">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer text-end">
-            <button class="btn btn-primary" type="submit">Update Profile</button>
-        </div>
-    </form>
+  </div>
 </template>
 <script>
-  import axios from "axios";
-  import { useRoute  } from 'vue-router'
-  import { onMounted, reactive } from "vue";
-  export default {
-    setup() {
-      //reactive state
-      const users = reactive({
-        name: '',
-        email: '',
-      })
-      //vue route
-      const route = useRoute()
-
-      onMounted(() => {
-        //get API from Laravel Backend
-        axios.get(`http://localhost:8000/api/users/${route.params.id}`)
-          .then((response) => {
-            //assign state posts with response data
-            users.name = response.data.data.name,
-            users.email = response.data.data.email
-          })
-          .catch((error) => {
-            console.log(error.response.data);
-          });
-      });
-
-      return{
-            users,
-            route
-      }
-    }
-  }
+import { reactive, onMounted } from "vue";
+export default {
+  setup() {
+    const user = reactive({
+      name: "",
+      email: "",
+    });
+    //mounted
+    onMounted(() => {
+      user.name = localStorage.getItem("name");
+      user.email = localStorage.getItem("email");
+    });
+    //return
+    return {
+      user,
+    };
+  },
+};
 </script>

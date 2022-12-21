@@ -107,6 +107,7 @@ export default {
 
     onMounted(() => {
       //get API from Backend
+      axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
       axios
         .get(`http://localhost:8000/api/kurirs/${route.params.id}`)
         .then((response) => {
@@ -127,6 +128,7 @@ export default {
       let umur_kurir = kurir.umur_kurir;
       let telp_kurir = kurir.telp_kurir;
       let gender_kurir = kurir.gender_kurir;
+      axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
       axios
         .put(`http://localhost:8000/api/kurirs/${route.params.id}`, {
           nama_kurir: nama_kurir,

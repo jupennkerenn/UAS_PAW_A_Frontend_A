@@ -65,6 +65,7 @@ export default {
 
         onMounted(() => {
             //get API from Laravel Backend
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.get('http://localhost:8000/api/pengiriman_barangs')
                 .then(response => {
                     //assign state posts with response data
@@ -77,6 +78,7 @@ export default {
         function store() {
             let id_barang = laporan_keluhan.id_barang
             let keluhan = laporan_keluhan.keluhan
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.post('http://localhost:8000/api/laporan_keluhans', {
                 id_barang: id_barang,
                 keluhan: keluhan

@@ -9,9 +9,11 @@
                         <form @submit.prevent="update">
                             <div class="form-group mb-3">
                                 <label class="form-label">Nama Barang</label>
-                                <select class="form-control" v-model="laporan_keluhan.id_barang" placeholder="Masukkan barang Anda">
+                                <select class="form-control" v-model="laporan_keluhan.id_barang"
+                                    placeholder="Masukkan barang Anda">
                                     <option disabled value="">Masukkan Nama Barang</option>
-                                    <option v-for="(pengiriman_barang,id) in pengiriman_barangs" :key="id" v-bind:value="pengiriman_barang.id">
+                                    <option v-for="(pengiriman_barang, id) in pengiriman_barangs" :key="id"
+                                        v-bind:value="pengiriman_barang.id">
                                         {{ pengiriman_barang.nama_barang }}
                                     </option>
                                 </select>
@@ -29,7 +31,7 @@
                                 <!-- validation -->
                                 <div v-if="validation.keluhan" class="mt-2 alert alert-danger">
                                     {{
-                                            validation.keluhan[0]
+        validation.keluhan[0]
                                     }}
                                 </div>
                             </div>
@@ -67,6 +69,7 @@ export default {
 
         onMounted(() => {
             //get API from Laravel Backend
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.get('http://localhost:8000/api/pengiriman_barangs')
                 .then(response => {
                     //assign state posts with response data
@@ -75,19 +78,21 @@ export default {
                     console.log(error.response.data)
                 })
 
-                axios.get(`http://localhost:8000/api/laporan_keluhans/${route.params.id}`)
-            .then(response => {
-                //assign state posts with response data
-                laporan_keluhan.id_barang = response.data.data.id_barang
-                laporan_keluhan.keluhan  = response.data.data.keluhan
-            }).catch(error => {
-                console.log(error.response.data)
-            })
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
+            axios.get(`http://localhost:8000/api/laporan_keluhans/${route.params.id}`)
+                .then(response => {
+                    //assign state posts with response data
+                    laporan_keluhan.id_barang = response.data.data.id_barang
+                    laporan_keluhan.keluhan = response.data.data.keluhan
+                }).catch(error => {
+                    console.log(error.response.data)
+                })
         })
         //method store
         function update() {
             let id_barang = laporan_keluhan.id_barang
             let keluhan = laporan_keluhan.keluhan
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.put(`http://localhost:8000/api/laporan_keluhans/${route.params.id}`, {
                 id_barang: id_barang,
                 keluhan: keluhan
@@ -114,7 +119,7 @@ export default {
 }
 </script>
 <style>
-    .toast-success {
-        background-color: #28a745;
-    }
+.toast-success {
+    background-color: #28a745;
+}
 </style>

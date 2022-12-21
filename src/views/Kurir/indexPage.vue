@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="card border-0 rounded shadow">
                     <div class="card-body">
-                        <router-link :to="{ name: 'kurir.create' }" class="btn btn-md btn-success">TAMBAH
+                        <router-link :to="{ name: 'kurir.create' }" class="btn btn-md btn-success">REGISTER
                             KURIR
                         </router-link>
                         <table class="table table-striped table-bordered mt-4">
@@ -61,6 +61,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.get('http://localhost:8000/api/kurirs')
                 .then(response => {
                     //assign state posts with response data
@@ -70,6 +71,7 @@ export default {
                 })
         })
         function update(id) {
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.delete(`http://localhost:8000/api/kurirs/${id}`, 
             {
                 }).then(() => {
@@ -83,6 +85,7 @@ export default {
         function destroy(id) {
             
             //delete data post by ID
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.delete('http://localhost:8000/api/kurirs/'+id)
             .then(() => {
                 notif.error('Data Berhasil Dihapus')

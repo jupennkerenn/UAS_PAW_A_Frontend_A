@@ -1,5 +1,5 @@
 <template>
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow gradient-custom-2">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">KIRANG GO!</a>
         <button class="navbar-toggler position-absolute d-md-none 
     collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria controls="sidebarMenu"
@@ -30,18 +30,23 @@
                                     'kurir.index'
                             }" class="nav-link">Register Kurir</router-link>
                         </li>
-                        <li class="nav-item">
-                            <router-link :to="{
-                                name:
-                                    'profile.index'
-                            }" class="nav-link">Profile</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link :to="{
-                                name:
-                                    'kurir.index'
-                            }" class="nav-link">Kurir</router-link>
-                        </li>
+                        <div class="dropdown show">
+                            <a class="d-flex align-items-center px-3 text-white text-decoration-none dropdown-toggle btn btn-secondary dropdown-toggle gradient-custom-2" href="#" role="button" id="dropdownMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            More Menu
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow gradient-custom-2" aria-labelledby="dropdownUser">
+                                <li>
+                                    <router-link :to="{
+                                        name:
+                                            'profile.index'
+                                    }" class="dropdown-item">Profile</router-link>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li @click.prevent="logout"><a class="dropdown-item" href="#">Log out</a></li>
+                            </ul>
+                        </div>
                     </ul>
                 </div>
             </nav>
@@ -53,8 +58,48 @@
     </div>
 </template>
 <script>
+import { useRouter } from "vue-router";
+import axios from "axios";
 export default {
-}
+    setup() {
+        const notif = window.toastr;
+        notif.option = {
+            closeButton: true,
+            timeOut: 1000,
+        };
+        //inisialisasi vue router on Composition API
+        const router = useRouter();
+
+        //method logout
+        function logout() {
+            //logout
+
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
+            axios
+                .post("http://localhost:8000/api/logout")
+                .then((response) => {
+                    if (response.data.success) {
+                        //remove localStorage
+                        localStorage.removeItem("token");
+
+                        //redirect ke halaman login
+                        notif.success("Berhasil Logout!");
+                        router
+                            .push({
+                                name: "Intro",
+                            })
+                    }
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                });
+        }
+
+        return {
+            logout,
+        };
+    },
+};
 </script>
 <style>
 body {
@@ -65,6 +110,15 @@ body {
     width: 16px;
     height: 16px;
     vertical-align: text-bottom;
+}
+
+.gradient-custom-2 {
+
+background: #fccb90;
+
+background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+
+background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
 /*

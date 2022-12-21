@@ -55,6 +55,7 @@ export default {
         //mounted
         onMounted(() => {
             //get API from Laravel Backend
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.get('http://localhost:8000/api/laporan_keluhans')
                 .then(response => {
                     //assign state posts with response data
@@ -67,10 +68,11 @@ export default {
         function destroy(id) {
             
             //delete data post by ID
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.delete('http://localhost:8000/api/laporan_keluhans/'+id)
             .then(() => {
                 notif.error('Data Berhasil Dihapus')
-        
+                axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
                 axios.get('http://localhost:8000/api/laporan_keluhans')
                 .then(response => {
                     //assign state posts with response data

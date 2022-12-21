@@ -106,6 +106,7 @@ export default {
       let umur_kurir = kurir.umur_kurir;
       let gender_kurir = kurir.gender_kurir;
       let telp_kurir = kurir.telp_kurir;
+      axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
       axios
         .post("http://localhost:8000/api/kurirs", {
           nama_kurir: nama_kurir,

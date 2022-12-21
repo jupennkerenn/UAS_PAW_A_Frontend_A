@@ -167,6 +167,7 @@ export default {
             let estimasi = pengiriman_barang.estimasi
             let nama_penerima = pengiriman_barang.nama_penerima
             let telp_penerima = pengiriman_barang.telp_penerima
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.post('http://localhost:8000/api/pengiriman_barangs', {
                 nama_barang: nama_barang,
                 nama_pengirim: nama_pengirim,

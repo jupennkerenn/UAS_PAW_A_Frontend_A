@@ -160,6 +160,7 @@ export default {
 
         onMounted(() => {
             //get API from Backend
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.get(`http://localhost:8000/api/pengiriman_barangs/${route.params.id}`)
             .then(response => {
                 //assign state posts with response data
@@ -190,6 +191,7 @@ export default {
             let estimasi = pengiriman_barang.estimasi
             let nama_penerima = pengiriman_barang.nama_penerima
             let telp_penerima = pengiriman_barang.telp_penerima
+            axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios.put(`http://localhost:8000/api/pengiriman_barangs/${route.params.id}`, {
                 nama_barang: nama_barang,
                 nama_pengirim: nama_pengirim,
