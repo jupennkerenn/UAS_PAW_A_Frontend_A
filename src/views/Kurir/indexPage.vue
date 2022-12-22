@@ -62,7 +62,7 @@ export default {
         onMounted(() => {
             //get API from Laravel Backend
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.get('http://localhost:8000/api/kurirs')
+            axios.get('https://brg.jalanskuy.com/jasa_kirim_barang/public/api/kurirs')
                 .then(response => {
                     //assign state posts with response data
                     kurirs.value = response.data.data
@@ -72,7 +72,7 @@ export default {
         })
         function update(id) {
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.delete(`http://localhost:8000/api/kurirs/${id}`, 
+            axios.delete(`https://brg.jalanskuy.com/jasa_kirim_barang/public/api/kurirs/${id}`, 
             {
                 }).then(() => {
                     router.push({
@@ -86,11 +86,11 @@ export default {
             
             //delete data post by ID
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.delete('http://localhost:8000/api/kurirs/'+id)
+            axios.delete('https://brg.jalanskuy.com/jasa_kirim_barang/public/api/kurirs/'+id)
             .then(() => {
                 notif.error('Data Berhasil Dihapus')
         
-                axios.get('http://localhost:8000/api/kurirs')
+                axios.get('https://brg.jalanskuy.com/jasa_kirim_barang/public/api/kurirs')
                 .then(response => {
                     //assign state posts with response data
                     kurirs.value = response.data.data

@@ -56,7 +56,7 @@ export default {
         onMounted(() => {
             //get API from Laravel Backend
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.get('http://localhost:8000/api/laporan_keluhans')
+            axios.get('https://brg.jalanskuy.com/jasa_kirim_barang/public/api/laporan_keluhans')
                 .then(response => {
                     //assign state posts with response data
                     laporan_keluhans.value = response.data.data
@@ -69,11 +69,11 @@ export default {
             
             //delete data post by ID
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.delete('http://localhost:8000/api/laporan_keluhans/'+id)
+            axios.delete('https://brg.jalanskuy.com/jasa_kirim_barang/public/api/laporan_keluhans/'+id)
             .then(() => {
                 notif.error('Data Berhasil Dihapus')
                 axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-                axios.get('http://localhost:8000/api/laporan_keluhans')
+                axios.get('https://brg.jalanskuy.com/jasa_kirim_barang/public/api/laporan_keluhans')
                 .then(response => {
                     //assign state posts with response data
                     laporan_keluhans.value = response.data.data

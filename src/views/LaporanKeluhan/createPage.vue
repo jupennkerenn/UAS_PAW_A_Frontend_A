@@ -24,8 +24,8 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Laporan Keluhan</label>
-                                <input type="text-area" class="form-control" v-model="laporan_keluhan.keluhan"
-                                    placeholder="Masukkan Keluhan Anda!">
+                                <textarea class="form-control" v-model="laporan_keluhan.keluhan"
+                                    placeholder="Masukkan Keluhan Anda!" rows="3"></textarea>
                                 <!-- validation -->
                                 <div v-if="validation.keluhan" class="mt-2 alert alert-danger">
                                     {{
@@ -66,7 +66,7 @@ export default {
         onMounted(() => {
             //get API from Laravel Backend
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.get('http://localhost:8000/api/pengiriman_barangs')
+            axios.get('https://brg.jalanskuy.com/jasa_kirim_barang/public/api/pengiriman_barangs')
                 .then(response => {
                     //assign state posts with response data
                     pengiriman_barangs.value = response.data.data
@@ -79,7 +79,7 @@ export default {
             let id_barang = laporan_keluhan.id_barang
             let keluhan = laporan_keluhan.keluhan
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.post('http://localhost:8000/api/laporan_keluhans', {
+            axios.post('https://brg.jalanskuy.com/jasa_kirim_barang/public/api/laporan_keluhans', {
                 id_barang: id_barang,
                 keluhan: keluhan
             }).then(() => {

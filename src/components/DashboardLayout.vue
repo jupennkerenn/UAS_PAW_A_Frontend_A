@@ -76,7 +76,7 @@ export default {
 
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
             axios
-                .post("http://localhost:8000/api/logout")
+                .post("https://brg.jalanskuy.com/jasa_kirim_barang/public/api/logout")
                 .then((response) => {
                     if (response.data.success) {
                         //remove localStorage

@@ -26,7 +26,6 @@
               <div class="form-group mb-3">
                 <label for="content" class="form-label">Umur Kurir</label>
                 <input
-                  type="number"
                   class="form-control"
                   v-model="kurir.umur_kurir"
                   placeholder="Masukkan Umur Kurir"
@@ -43,7 +42,6 @@
                 <label for="content" class="form-label">No Telp Kurir</label>
                 <input
                   class="form-control"
-                  type="number"
                   v-model="kurir.telp_kurir"
                   placeholder="Masukkan No Telp Kurir"
                 />
@@ -109,7 +107,7 @@ export default {
       //get API from Backend
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
       axios
-        .get(`http://localhost:8000/api/kurirs/${route.params.id}`)
+        .get(`https://brg.jalanskuy.com/jasa_kirim_barang/public/api/kurirs/${route.params.id}`)
         .then((response) => {
           //assign state posts with response data
           kurir.nama_kurir = response.data.data.nama_kurir;
@@ -130,7 +128,7 @@ export default {
       let gender_kurir = kurir.gender_kurir;
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
       axios
-        .put(`http://localhost:8000/api/kurirs/${route.params.id}`, {
+        .put(`https://brg.jalanskuy.com/jasa_kirim_barang/public/api/kurirs/${route.params.id}`, {
           nama_kurir: nama_kurir,
           umur_kurir: umur_kurir,
           telp_kurir: telp_kurir,

@@ -26,7 +26,6 @@
               <div class="form-group mb-3">
                 <label for="content" class="form-label">Umur Kurir</label>
                 <input
-                  type="number"
                   class="form-control"
                   v-model="kurir.umur_kurir"
                   placeholder="Masukkan Umur Kurir"
@@ -43,7 +42,6 @@
                 <label for="content" class="form-label">No Telp Kurir</label>
                 <input
                   class="form-control"
-                  type="number"
                   v-model="kurir.telp_kurir"
                   placeholder="Masukkan No Telp Kurir"
                 />
@@ -108,7 +106,7 @@ export default {
       let telp_kurir = kurir.telp_kurir;
       axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
       axios
-        .post("http://localhost:8000/api/kurirs", {
+        .post("https://brg.jalanskuy.com/jasa_kirim_barang/public/api/kurirs", {
           nama_kurir: nama_kurir,
           umur_kurir: umur_kurir,
           gender_kurir: gender_kurir,

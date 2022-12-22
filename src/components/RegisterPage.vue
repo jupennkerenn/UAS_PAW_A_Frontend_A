@@ -96,7 +96,7 @@ export default {
       let email = user.email;
       let password = user.password;
       axios
-        .post("http://localhost:8000/api/register", {
+        .post("https://brg.jalanskuy.com/jasa_kirim_barang/public/api/register", {
           name: name,
           email: email,
           password: password,

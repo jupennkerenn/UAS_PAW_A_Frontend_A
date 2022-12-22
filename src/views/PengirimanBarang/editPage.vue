@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">No Telp Pengirim</label>
-                                <input class="form-control" type="number" v-model="pengiriman_barang.telp_pengirim"
+                                <input class="form-control" v-model="pengiriman_barang.telp_pengirim"
                                     placeholder="Masukkan No Telp Pengirim">
                                 <!-- validation -->
                                 <div v-if="validation.telp_pengirim" class="mt-2 alert alert-danger">
@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">Berat Barang</label>
-                                <input class="form-control" type="number" v-model="pengiriman_barang.berat_barang" placeholder="Masukkan Berat Barang">
+                                <input class="form-control" type="number" step="any" v-model="pengiriman_barang.berat_barang" placeholder="Masukkan Berat Barang">
                                 <!-- validation -->
                                 <div v-if="validation.berat_barang" class="mt-2 alert alert-danger">
                                     {{ validation.berat_barang[0]
@@ -110,7 +110,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="content" class="form-label">No Telp Penerima</label>
-                                <input class="form-control" type="number" v-model="pengiriman_barang.telp_penerima"
+                                <input class="form-control" v-model="pengiriman_barang.telp_penerima"
                                     placeholder="Masukkan No Telp Penerima">
                                 <!-- validation -->
                                 <div v-if="validation.telp_penerima" class="mt-2 alert alert-danger">
@@ -161,7 +161,7 @@ export default {
         onMounted(() => {
             //get API from Backend
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.get(`http://localhost:8000/api/pengiriman_barangs/${route.params.id}`)
+            axios.get(`https://brg.jalanskuy.com/jasa_kirim_barang/public/api/pengiriman_barangs/${route.params.id}`)
             .then(response => {
                 //assign state posts with response data
                 pengiriman_barang.nama_barang    = response.data.data.nama_barang
@@ -192,7 +192,7 @@ export default {
             let nama_penerima = pengiriman_barang.nama_penerima
             let telp_penerima = pengiriman_barang.telp_penerima
             axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`
-            axios.put(`http://localhost:8000/api/pengiriman_barangs/${route.params.id}`, {
+            axios.put(`https://brg.jalanskuy.com/jasa_kirim_barang/public/api/pengiriman_barangs/${route.params.id}`, {
                 nama_barang: nama_barang,
                 nama_pengirim: nama_pengirim,
                 telp_pengirim: telp_pengirim,
